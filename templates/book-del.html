@@ -1,0 +1,21 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>本削除</title>
+  </head>
+  <body>
+    <h1>本削除</h1>
+
+    <p>
+      本当に本を削除しますか？<br>
+      <form method="POST" action="{{url_for('book_del_execute', id=id)}}">
+        <input type="submit" value="削除実行">
+      </form>
+    </p>
+
+    <p>
+      <a href="{{url_for('books')}}">本一覧</a><br>
+      <a href="{{url_for('index')}}">図書館へようこそ</a>
+    </p>
+  </body>
+</html>

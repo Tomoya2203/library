@@ -1,0 +1,31 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>本追加</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style/book-add.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <h1>本追加</h1>
+
+      <form method="POST" action="{{url_for('book_add_execute')}}">
+        <label>本番号:</label>
+        <input type="text" name="book_id"><br>
+        <label>タイトル:</label>
+        <input type="text" name="title"><br>
+        <label>出版年:</label>
+        <input type="text" name="publish_year">年<br>
+        <label>作者ID(複数の場合はカンマ区切りで):</label>
+        <input type="text" name="author_id"><br>
+        <label>ジャンルID:</label>
+        <input type="text" name="genre_id"><br>
+        <input type="submit" value="追加">
+      </form>
+
+      <p>
+        <a href="{{url_for('books')}}">本一覧</a><br>
+        <a href="{{url_for('index')}}">図書館へようこそ</a>
+      </p>
+    </div>
+  </body>
+</html>

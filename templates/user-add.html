@@ -1,0 +1,26 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>ユーザー追加</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style/book-add.css') }}">
+  </head>
+    <body>
+    <div class="container">
+      <h1>ユーザー追加</h1>
+
+      <p>
+        <form method="POST" action="{{url_for('user_add_execute')}}">
+          ユーザー番号: <input type="text" name="user_id"><br>
+          名前: <input type="text" name="name"><br>
+          メールアドレス: <input type="text" name="email_address"><br>
+          電話番号: <input type="text" name="phone_number"><br>
+          <input type="submit" value="追加">
+        </form>
+      </p>
+      <p>
+        <a href="{{url_for('users')}}">ユーザー一覧</a><br>
+        <a href="{{url_for('index')}}">図書館へようこそ</a>
+      </p>
+    </div>
+  </body>
+</html>

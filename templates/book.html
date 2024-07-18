@@ -1,0 +1,47 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>本管理番号: {{book.BookID}}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style/book.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <h1>本管理番号: {{book.BookID}}</h1>
+
+      <div class="book-details">
+        <p>
+          BookID: {{book.bookID}}<br>
+          タイトル: {{book.Title}}<br>
+          出版年: {{book.Year}}<br>
+          ジャンル: {{book.Name}}(ジャンルID: {{book.GenreID}})<br>
+        </p>
+      </div>
+
+      <div class="author-details">
+        <p>作者:</p>
+        {% for author in authors %}
+        <p>{{author.Name}}</p>
+        {% endfor %}
+      </div>
+
+      <div class="library-details">
+        <p>保有図書館:</p>
+        {% for library in libraries %}
+        <p>{{library.Name}}, CopyID: {{library.CopyID}} <a href="{{url_for('copy_del', id=library.CopyID)}}">削除</a></p>
+        {% endfor %}
+      </div>
+
+
+      <p>
+        <a href="{{url_for('book_del', id=book.BookID)}}">削除</a>
+      </p>
+
+
+
+      <p>
+        <a href="{{url_for('books')}}">本一覧</a><br>
+        <a href="{{url_for('index')}}">図書館へようこそ</a>
+      </p>
+    </div>
+  </body>
+</html>

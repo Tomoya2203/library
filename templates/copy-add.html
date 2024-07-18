@@ -1,0 +1,28 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>蔵書追加</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style/book-add.css') }}">
+  </head>
+  <body>
+  <div class="container">
+    <h1>蔵書追加</h1>
+    <p>
+    蔵書を追加する前に先に本を追加してください。
+    </p>
+    <p>
+      <form method="POST" action="{{url_for('copy_add_execute')}}">
+        本番号: <input type="text" name="book_id"><br>
+        蔵書番号: <input type="text" name="copy_id"><br>
+        図書館番号: <input type="text" name="library_id"><br>
+        <input type="submit" value="追加">
+      </form>
+    </p>
+
+    <p>
+      <a href="{{url_for('books')}}">本一覧</a><br>
+      <a href="{{url_for('index')}}">図書館へようこそ</a>
+    </p>
+  </div>
+  </body>
+</html>

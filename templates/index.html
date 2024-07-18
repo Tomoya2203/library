@@ -1,0 +1,20 @@
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>テストWebアプリ</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style/index.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>図書館へようこそ</h1>
+        <div class="grid-container">
+            <a href="{{url_for('books')}}">本一覧</a>
+            <a href="{{url_for('users')}}">ユーザー一覧</a>
+            <a href="{{url_for('book_add')}}">本追加</a>
+            <a href="{{url_for('copy_add')}}">蔵書追加</a>
+            <a href="{{url_for('user_add')}}">ユーザー追加</a>
+            <a href="{{url_for('borrow_add')}}">本貸し出し</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザー番号: {{user.userID}}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style/user.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>ユーザー番号: {{user.userID}}</h1>
+
+      <div class="user-details">
+        <p>
+            UserID: {{user.userID}}<br>
+            名前: {{user.Name}}<br>
+            メールアドレス: {{user.Email}}<br>
+            電話番号: {{user.PhoneNumber}}<br>
+        <form method="POST" action="{{url_for('user_del', user_id=user.userID)}}">
+            <input type="submit" value="ユーザーの削除">
+        </form>
+        </p>
+      </div>
+
+      <div class="history-details">
+          <p>貸し出し履歴:</p>
+          {% for history in histories %}
+          <div class="history-entry">
+              <p>貸し出し本ID: {{history.CopyID}}, 貸し出し日: {{history.BorrowTime}}</p>
+              {% if history.ReturnTime is none %}
+              <form method="POST" action="{{url_for('return_add_execute')}}">
+                  <label>返却日:</label>
+                  <input type="text" name="return_time"><br>
+                  <input type="hidden" name="copy_id" value="{{history.CopyID}}">
+                  <input type="hidden" name="borrow_time" value="{{history.BorrowTime}}">
+                  <input type="hidden" name="user_id" value="{{user.userID}}">
+                  <input type="submit" value="追加">
+              </form>
+              {% else %}
+              <p>返却日: {{history.ReturnTime}}</p>
+              {% endif %}
+              <form method="POST"
+                    action="{{url_for('history_del', copy_id=history.CopyID, user_id=user.userID, borrow_time=history.BorrowTime)}}">
+                  <input type="submit" value="貸し出し履歴の削除">
+              </form>
+          </div>
+          {% endfor %}
+      </div>
+    <p>
+        <br>
+    </p>
+
+
+    <p>
+        <a href="{{url_for('users')}}">ユーザー一覧</a><br>
+        <a href="{{url_for('index')}}">図書館へようこそ</a>
+    </p>
+  </div>
+</body>
+</html>
